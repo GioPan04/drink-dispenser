@@ -1,3 +1,4 @@
+import 'package:drink_dispenser/components/image_button.dart';
 import 'package:flutter/material.dart';
 
 class TypeChooser extends StatefulWidget {
@@ -13,13 +14,15 @@ class _TypeChooserState extends State<TypeChooser> {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('Cosa preferisci?'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(onPressed: () {}, child: const Text('Bevanda')),
-                ElevatedButton(onPressed: () {}, child: const Text('Drink')),
+              children: const [
+                ImageButton(text: 'Bevanda', imageAsset: 'assets/images/bevande.jpg'),
+                SizedBox(width: 16.0,),
+                ImageButton(text: 'Drink', imageAsset: 'assets/images/drink.jpg')
               ],
             )
           ],
