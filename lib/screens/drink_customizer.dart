@@ -1,4 +1,5 @@
 import 'package:drink_dispenser/models/drink.dart';
+import 'package:drink_dispenser/models/drink_ingredient.dart';
 import 'package:flutter/material.dart';
 
 class DrinkCustomizer extends StatefulWidget {
@@ -33,34 +34,73 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
 
   @override
   Widget build(BuildContext context) {
+    final Drink drink = widget.drink;
+
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
+      body: Stack(
         children: [
-          Row(
+          Column(
             children: [
-              Image.asset('assets/images/drink.jpg', fit: BoxFit.cover, width: 300, height: 200,),
-              const Text('Vodka Lemon'),
+              Row(
+                children: [
+                  Image.asset(drink.image, fit: BoxFit.cover, width: 300, height: 200,),
+                  Text(drink.name),
+                ],
+              ),
+
+              ..._buildSliders()
             ],
           ),
-          ...widget.drink.ingredients.asMap().map((i, e) => MapEntry(
-            i,
-            Slider(
-              value: _percentages[i].toDouble(),
-              min: 0,
-              max: 100,
-              divisions: 10,
-              label: "${e.name}: ${int.parse((_percentages[i] / 10).toStringAsFixed(0)) * 10}%",
-              onChanged: (v) {
-                setState(() {
-                  _percentages[i] = v;
-                  _updateData();
-                });
-              }
-            ),
-          )).values.toList()
+          Positioned(
+            bottom: 10,
+            right: 0,
+            left: 0,
+            child: Center(
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.local_bar),
+                label: const Text("Prepara", style: TextStyle(fontSize: 24),),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(32.0))
+                ),
+              ),
+            )
+          )
         ],
       ),
     );
+  }
+
+  List<Widget> _buildSliders() {
+    return widget.drink.ingredients.asMap().map((i, e) {
+      final double percentage = _percentages[i].toDouble();
+      final String label = "${e.name}: ${int.parse((_percentages[i] / 10).toStringAsFixed(0)) * 10}%";
+
+      return MapEntry(
+        i,
+        Row(
+          children: [
+            Text(e.name),
+            Expanded(
+              child: Slider(
+                value: percentage,
+                min: 0,
+                max: 100,
+                divisions: 10,
+                label: label,
+                onChanged: (v) {
+                  setState(() {
+                    _percentages[i] = v;
+                    _updateData();
+                  });
+                }
+              ),
+            ),
+          ],
+        ),
+      );
+    }).values.toList();
   }
 }
