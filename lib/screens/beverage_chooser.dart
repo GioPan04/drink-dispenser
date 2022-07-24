@@ -2,6 +2,7 @@ import 'package:drink_dispenser/components/image_button.dart';
 import 'package:drink_dispenser/models/beverage.dart';
 import 'package:drink_dispenser/models/drink.dart';
 import 'package:drink_dispenser/providers/menu_provider.dart';
+import 'package:drink_dispenser/services/dispenser.dart';
 import 'package:flutter/material.dart';
 
 class BeverageChooser extends StatefulWidget {
@@ -28,7 +29,7 @@ class _BeverageChooserState extends State<BeverageChooser> {
           return ImageButton(
             imageAsset: beverage.image,
             text: beverage.name,
-            onClick: () {}
+            onClick: () => DispenderService.simpleDrink(beverage.pin)
           );
         },
       ),

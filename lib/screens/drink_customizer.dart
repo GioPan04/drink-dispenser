@@ -1,5 +1,6 @@
 import 'package:drink_dispenser/models/drink.dart';
 import 'package:drink_dispenser/models/drink_ingredient.dart';
+import 'package:drink_dispenser/services/dispenser.dart';
 import 'package:flutter/material.dart';
 
 class DrinkCustomizer extends StatefulWidget {
@@ -31,6 +32,11 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
     }
   }
 
+  void _generateDrink() {
+    List<ComplexDrink> ingredients = widget.drink.ingredients.asMap().map((i, e) => MapEntry(e.pin, _percentages[i].toInt())).entries.toList();
+    DispenderService.complexDrink(ingredients);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +64,7 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
             left: 0,
             child: Center(
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: _generateDrink,
                 icon: const Icon(Icons.local_bar),
                 label: const Text("Prepara", style: TextStyle(fontSize: 18),),
                 style: ButtonStyle(
