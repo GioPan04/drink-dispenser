@@ -44,7 +44,7 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
             children: [
               Row(
                 children: [
-                  Image.asset(drink.image, fit: BoxFit.cover, width: 300, height: 200,),
+                  Image.asset(drink.image, fit: BoxFit.cover, width: 150, height: 100,),
                   Text(drink.name),
                 ],
               ),
@@ -60,10 +60,10 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
               child: ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.local_bar),
-                label: const Text("Prepara", style: TextStyle(fontSize: 24),),
+                label: const Text("Prepara", style: TextStyle(fontSize: 18),),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
-                  padding: MaterialStateProperty.all(const EdgeInsets.all(32.0))
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(16.0))
                 ),
               ),
             )

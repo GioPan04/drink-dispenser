@@ -23,10 +23,34 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MenuProvider(
       menu: menu,
-      child: MaterialApp(
-        theme: ThemeData.dark(),
-        home: const TypeChooser(),
+      child: FakeDevicePixelRatio(
+        fakeDevicePixelRatio: 1.367054,
+        child: MaterialApp(
+          theme: ThemeData.dark(),
+          home: const TypeChooser(),
+        ),
       ),
+    );
+  }
+}
+
+class FakeDevicePixelRatio extends StatelessWidget {
+  final num fakeDevicePixelRatio;
+  final Widget child;
+
+  const FakeDevicePixelRatio({required this.fakeDevicePixelRatio, required this.child, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ratio = fakeDevicePixelRatio / WidgetsBinding.instance.window.devicePixelRatio;
+    
+    return FractionallySizedBox(
+      widthFactor: 1/ratio,
+      heightFactor: 1/ratio,
+      child: Transform.scale(
+        scale: ratio,
+        child: child
+      )
     );
   }
 }

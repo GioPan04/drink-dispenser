@@ -27,7 +27,7 @@ class _DrinkChooserState extends State<DrinkChooser> {
       appBar: AppBar(),
       body: GridView.builder(
         itemCount: drinks.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, childAspectRatio: 4/5),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, childAspectRatio: 4/5),
         itemBuilder: (context, index) {
           final Drink drink = drinks[index];
           

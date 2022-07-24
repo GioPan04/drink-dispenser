@@ -24,8 +24,8 @@ class ImageButton extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Container(
-                width: 300,
-                height: 200,
+                width: 150,
+                height: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4.0),
                   image: DecorationImage(
