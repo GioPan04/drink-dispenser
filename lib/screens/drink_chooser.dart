@@ -40,12 +40,16 @@ class _DrinkChooserState extends State<DrinkChooser> {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Row(
-              children: [
-                Filter(label: 'A base di Vodka', onTap: () => _onFilter('Vodka'), active: _currentFilter == 'Vodka'),
-                Filter(label: 'A base di Gin', onTap: () => _onFilter('Gin'), active: _currentFilter == 'Gin'),
-              ],
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            sliver: SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Filter(label: 'A base di Vodka', onTap: () => _onFilter('Vodka'), active: _currentFilter == 'Vodka'),
+                  Filter(label: 'A base di Gin', onTap: () => _onFilter('Gin'), active: _currentFilter == 'Gin'),
+                ],
+              ),
             ),
           ),
           SliverGrid(

@@ -41,10 +41,37 @@
           "name": "Lemon soda",
           "pin": 3,
           "percentage": 30
+        }
+      ]
+    },
+    {
+      "name": "Gin Tonic",
+      "image": "assets/images/drinks/gin-tonic.jpg",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "pin": 1,
+          "percentage": 40
         },
         {
-          "name": "Test",
-          "pin": 7,
+          "name": "Tonica",
+          "pin": 3,
+          "percentage": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Redbull",
+      "image": "assets/images/drinks/vodka-redbull.jpg",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "pin": 1,
+          "percentage": 40
+        },
+        {
+          "name": "Redbull",
+          "pin": 3,
           "percentage": 30
         }
       ]
