@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class ImageButton extends StatelessWidget {
 
   final String imageAsset, text;
+  final VoidCallback? onClick;
 
   const ImageButton({
     required this.imageAsset,
     required this.text,
+    this.onClick,
     Key? key
   }) : super(key: key);
 
@@ -15,7 +17,7 @@ class ImageButton extends StatelessWidget {
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(4.0),
-        onTap: () {},
+        onTap: onClick,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

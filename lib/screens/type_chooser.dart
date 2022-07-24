@@ -1,4 +1,5 @@
 import 'package:drink_dispenser/components/image_button.dart';
+import 'package:drink_dispenser/screens/drink_chooser.dart';
 import 'package:flutter/material.dart';
 
 class TypeChooser extends StatefulWidget {
@@ -9,6 +10,13 @@ class TypeChooser extends StatefulWidget {
 }
 
 class _TypeChooserState extends State<TypeChooser> {
+
+  void _chooseDrink() {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const DrinkChooser()
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +27,14 @@ class _TypeChooserState extends State<TypeChooser> {
             const Text('Cosa preferisci?'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                ImageButton(text: 'Bevanda', imageAsset: 'assets/images/bevande.jpg'),
-                SizedBox(width: 16.0,),
-                ImageButton(text: 'Drink', imageAsset: 'assets/images/drink.jpg')
+              children: [
+                const ImageButton(text: 'Bevanda', imageAsset: 'assets/images/bevande.jpg'),
+                const SizedBox(width: 16.0,),
+                ImageButton(
+                  text: 'Drink',
+                  imageAsset: 'assets/images/drink.jpg',
+                  onClick: _chooseDrink,
+                )
               ],
             )
           ],
