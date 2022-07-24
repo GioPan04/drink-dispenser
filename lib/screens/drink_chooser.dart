@@ -13,9 +13,9 @@ class DrinkChooser extends StatefulWidget {
 
 class _DrinkChooserState extends State<DrinkChooser> {
 
-  void _customizeDrink() {
+  void _customizeDrink(Drink drink) {
     Navigator.push(context, MaterialPageRoute(
-      builder: (context) => const DrinkCustomizer()
+      builder: (context) => DrinkCustomizer(drink: drink)
     ));
   }
 
@@ -24,6 +24,7 @@ class _DrinkChooserState extends State<DrinkChooser> {
     final List<Drink> drinks = MenuProvider.of(context).menu.drinks;
 
     return Scaffold(
+      appBar: AppBar(),
       body: GridView.builder(
         itemCount: drinks.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, childAspectRatio: 4/5),
@@ -33,7 +34,7 @@ class _DrinkChooserState extends State<DrinkChooser> {
           return ImageButton(
             imageAsset: drink.image,
             text: drink.name,
-            onClick: _customizeDrink
+            onClick: () => _customizeDrink(drink)
           );
         },
       )

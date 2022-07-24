@@ -40,7 +40,12 @@
         {
           "name": "Lemon soda",
           "pin": 3,
-          "percentage": 60
+          "percentage": 30
+        },
+        {
+          "name": "Test",
+          "pin": 7,
+          "percentage": 30
         }
       ]
     }

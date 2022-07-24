@@ -23,8 +23,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MenuProvider(
       menu: menu,
-      child: const MaterialApp(
-        home: TypeChooser(),
+      child: MaterialApp(
+        theme: ThemeData.dark(),
+        home: const TypeChooser(),
       ),
     );
   }
