@@ -9,7 +9,7 @@ class Menu {
 
   factory Menu.fromJson(Map<String,dynamic> data) {
     return Menu(
-      drinks: data['drinks'].map((data) => Drink.fromJson(data)).toList(),
+      drinks: data['drinks'].map<Drink>((data) => Drink.fromJson(data)).toList(),
     );
   }
 }

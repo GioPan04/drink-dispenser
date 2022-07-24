@@ -1,4 +1,6 @@
 import 'package:drink_dispenser/components/image_button.dart';
+import 'package:drink_dispenser/models/drink.dart';
+import 'package:drink_dispenser/providers/menu_provider.dart';
 import 'package:drink_dispenser/screens/drink_customizer.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +21,21 @@ class _DrinkChooserState extends State<DrinkChooser> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Drink> drinks = MenuProvider.of(context).menu.drinks;
+
     return Scaffold(
       body: GridView.builder(
-        itemCount: 20,
+        itemCount: drinks.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, childAspectRatio: 4/5),
-        itemBuilder: (context, index) => ImageButton(imageAsset: 'assets/images/drink.jpg', text: 'Vodka Lemon', onClick: _customizeDrink,),
+        itemBuilder: (context, index) {
+          final Drink drink = drinks[index];
+          
+          return ImageButton(
+            imageAsset: drink.image,
+            text: drink.name,
+            onClick: _customizeDrink
+          );
+        },
       )
     );
   }

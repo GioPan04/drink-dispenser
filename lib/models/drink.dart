@@ -15,7 +15,7 @@ class Drink {
     return Drink(
       name: data['name'],
       image: data['image'],
-      ingredients: data['ingredients'].map((data) => DrinkIngredient.fromJson(data)).toList()
+      ingredients: data['ingredients'].map<DrinkIngredient>((data) => DrinkIngredient.fromJson(data)).toList()
     );
   }
 }
