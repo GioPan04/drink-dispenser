@@ -37,7 +37,7 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
     final Drink drink = widget.drink;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text('Personalizza drink'),),
       body: Stack(
         children: [
           Column(
