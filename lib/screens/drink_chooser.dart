@@ -36,7 +36,7 @@ class _DrinkChooserState extends State<DrinkChooser> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scegli il tuo drink'),
+        title: const Text('Scegli il drink'),
       ),
       body: CustomScrollView(
         slivers: [

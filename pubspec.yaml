@@ -62,6 +62,7 @@ flutter:
     - assets/menu.json
     - assets/images/
     - assets/images/drinks/
+    - assets/images/beverages/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

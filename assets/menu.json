@@ -1,14 +1,14 @@
 {
-  "beverage": [
+  "beverages": [
     {
       "name": "Coca-Cola",
-      "image": "assets/images/beverages/coca-cola.jpg",
+      "image": "assets/images/beverages/coca-cola.jpeg",
       "pin": 4
     },
     {
-      "name": "Lemon soda",
-      "image": "assets/images/beverages/lemon-soda.jpg",
-      "pin": 3
+      "name": "Fanta",
+      "image": "assets/images/beverages/fanta.jpg",
+      "pin": 6
     }
   ],
   "drinks": [

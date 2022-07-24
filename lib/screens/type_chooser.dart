@@ -1,4 +1,5 @@
 import 'package:drink_dispenser/components/image_button.dart';
+import 'package:drink_dispenser/screens/beverage_chooser.dart';
 import 'package:drink_dispenser/screens/drink_chooser.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,12 @@ class _TypeChooserState extends State<TypeChooser> {
     ));
   }
 
+  void _chooseBeverage() {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const BeverageChooser()
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +35,11 @@ class _TypeChooserState extends State<TypeChooser> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const ImageButton(text: 'Bevanda', imageAsset: 'assets/images/bevande.jpg'),
+                ImageButton(
+                  text: 'Bevanda',
+                  imageAsset: 'assets/images/bevande.jpg',
+                  onClick: _chooseBeverage,
+                ),
                 const SizedBox(width: 16.0,),
                 ImageButton(
                   text: 'Drink',
