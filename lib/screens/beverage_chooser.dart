@@ -2,6 +2,7 @@ import 'package:drink_dispenser/components/image_button.dart';
 import 'package:drink_dispenser/models/beverage.dart';
 import 'package:drink_dispenser/models/drink.dart';
 import 'package:drink_dispenser/providers/menu_provider.dart';
+import 'package:drink_dispenser/screens/drinking.dart';
 import 'package:drink_dispenser/services/dispenser.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,16 @@ class BeverageChooser extends StatefulWidget {
 }
 
 class _BeverageChooserState extends State<BeverageChooser> {
+
+  void _drink(Beverage beverage) {
+    // DispenderService.simpleDrink(beverage.pin);
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DrinkingScreen()));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final List<Beverage> beverages = MenuProvider.of(context).menu.beverages;
-
 
     return Scaffold(
       appBar: AppBar(title: const Text('Scegli la bevanda')),
@@ -29,7 +36,7 @@ class _BeverageChooserState extends State<BeverageChooser> {
           return ImageButton(
             imageAsset: beverage.image,
             text: beverage.name,
-            onClick: () => DispenderService.simpleDrink(beverage.pin)
+            onClick: () => _drink(beverage),
           );
         },
       ),
