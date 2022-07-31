@@ -32,6 +32,7 @@ class _TypeChooserState extends State<TypeChooser> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('Cosa preferisci?'),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,7 +41,7 @@ class _TypeChooserState extends State<TypeChooser> {
                   imageAsset: 'assets/images/bevande.jpg',
                   onClick: _chooseBeverage,
                 ),
-                const SizedBox(width: 16.0,),
+                const SizedBox(width: 16.0),
                 ImageButton(
                   text: 'Drink',
                   imageAsset: 'assets/images/drink.jpg',
