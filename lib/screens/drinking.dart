@@ -43,7 +43,7 @@ class _DrinkingScreenState extends State<DrinkingScreen> with SingleTickerProvid
                   height: 50
                 ),
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pop(context),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                   ),

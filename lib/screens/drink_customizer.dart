@@ -1,5 +1,6 @@
 import 'package:drink_dispenser/models/drink.dart';
 import 'package:drink_dispenser/models/drink_ingredient.dart';
+import 'package:drink_dispenser/screens/drinking.dart';
 import 'package:drink_dispenser/services/dispenser.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,7 @@ class _DrinkCustomizerState extends State<DrinkCustomizer> {
 
   void _generateDrink() {
     List<ComplexDrink> ingredients = widget.drink.ingredients.asMap().map((i, e) => MapEntry(e.pin, _percentages[i].toInt())).entries.toList();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DrinkingScreen(name: widget.drink.name)));
     DispenderService.complexDrink(ingredients);
   }
 

@@ -16,8 +16,8 @@ class BeverageChooser extends StatefulWidget {
 class _BeverageChooserState extends State<BeverageChooser> {
 
   void _drink(Beverage beverage) {
-    // DispenderService.simpleDrink(beverage.pin);
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => DrinkingScreen(name: beverage.name)));
+    DispenderService.simpleDrink(beverage.pin);
   }
 
 
