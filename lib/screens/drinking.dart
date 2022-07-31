@@ -1,9 +1,11 @@
-import 'dart:math';
-
+import 'package:drink_dispenser/components/animated_wave.dart';
 import 'package:flutter/material.dart';
 
 class DrinkingScreen extends StatefulWidget {
-  const DrinkingScreen({Key? key}) : super(key: key);
+
+  final String name;
+
+  const DrinkingScreen({Key? key, required this.name}) : super(key: key);
 
   @override
   State<DrinkingScreen> createState() => _DrinkingScreenState();
@@ -26,52 +28,34 @@ class _DrinkingScreenState extends State<DrinkingScreen> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: Align(
-        alignment: Alignment.bottomCenter,
-        child: SizedBox(
-          width: size.width,
-          height: size.height,
-          child: AnimatedBuilder(
-            animation: _animationController,
-            builder: (context, child) => CustomPaint(
-              painter: WavePainter(waveAnimation: _animationController),
-            ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: AnimatedWave(animation: _animationController)
           ),
-        ),
+          Positioned.fill(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Eragazione ${widget.name}"),
+                const SizedBox(
+                  height: 50
+                ),
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  label: const Text("Annulla"),
+                  icon: const Icon(Icons.cancel, size: 16,),
+                )
+              ],
+            )
+          ),
+        ],
       ),
     );
   }
 }
 
-class WavePainter extends CustomPainter {
-
-  final Animation<double> waveAnimation;
-  final Paint _paint = Paint()..color = Colors.green;
-  final int _waveMultiplier = 5;
-
-  WavePainter({required this.waveAnimation});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Path path = Path();
-
-    for (double i = 0.0; i < size.width; i++) {
-      final double position = (size.height + 10) * waveAnimation.value;
-      final double wave = sin((i / size.width * 2 * pi) + ((waveAnimation.value * 10) * 2 * pi)) * _waveMultiplier;
-      path.lineTo(i, position - wave);
-    }
-
-    path.lineTo(size.width, size.height);
-    path.lineTo(0.0, size.height);
-    path.close();
-
-    canvas.drawPath(path, _paint);
-  }
-
-  @override
-  bool shouldRepaint(WavePainter oldDelegate) => true;
-
-}
