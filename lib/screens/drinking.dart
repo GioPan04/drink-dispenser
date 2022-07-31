@@ -33,7 +33,7 @@ class _DrinkingScreenState extends State<DrinkingScreen> with SingleTickerProvid
         alignment: Alignment.bottomCenter,
         child: SizedBox(
           width: size.width,
-          height: size.height - 150,
+          height: size.height,
           child: AnimatedBuilder(
             animation: _animationController,
             builder: (context, child) => CustomPaint(
