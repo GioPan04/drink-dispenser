@@ -50,6 +50,7 @@ class WavePainter extends CustomPainter {
 
   final Animation<double> waveAnimation;
   final Paint _paint = Paint()..color = Colors.green;
+  final int _waveMultiplier = 5;
 
   WavePainter({required this.waveAnimation});
 
@@ -58,7 +59,9 @@ class WavePainter extends CustomPainter {
     Path path = Path();
 
     for (double i = 0.0; i < size.width; i++) {
-      path.lineTo(i, (size.height + 10) * waveAnimation.value - (sin((i / size.width * 2 * pi) + ((waveAnimation.value * 10) * 2 * pi)) * 5));
+      final double position = (size.height + 10) * waveAnimation.value;
+      final double wave = sin((i / size.width * 2 * pi) + ((waveAnimation.value * 10) * 2 * pi)) * _waveMultiplier;
+      path.lineTo(i, position - wave);
     }
 
     path.lineTo(size.width, size.height);
