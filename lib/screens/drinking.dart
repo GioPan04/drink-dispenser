@@ -38,7 +38,7 @@ class _DrinkingScreenState extends State<DrinkingScreen> with SingleTickerProvid
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Eragazione ${widget.name}"),
+                Text("Erogazione ${widget.name}"),
                 const SizedBox(
                   height: 50
                 ),
